@@ -25,4 +25,16 @@ public class EventController {
         return eventService.getAllEvents();
     }
 
+    @PutMapping("/update/{id}")
+    public Event updateEvent(@RequestBody Event event, @PathVariable int id) {
+        event.setId(id);
+        return eventService.updateEvent(event);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteEvent(@PathVariable int id) {
+        eventService.deleteEvent(id);
+        return "Event deleted successfully";
+    }
+
 }
