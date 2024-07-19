@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Sidemenu from "../../components/sidemenu/Sidemenu";
 import Hero from "../../components/hero/Hero";
+import { MdDelete } from "react-icons/md";
 import './Events.css';
 
 const sampleEvents = [
@@ -33,12 +34,6 @@ const Events = () => {
     console.log(`Delete event with id: ${id}`);
     // Implement delete logic here
   };
-
-  const handleViewAttendees = (id) => {
-    console.log(`View attendees for event with id: ${id}`);
-    // Implement view attendees logic here
-  };
-
   return (
     <div className="events-container">
       <Sidemenu />
@@ -48,13 +43,8 @@ const Events = () => {
           {events.map(event => (
             <div key={event.id} className="event-card">
               <h3>{event.name}</h3>
-              <p>{event.description}</p>
-              <p><strong>Date:</strong> {event.date}</p>
-              <p><strong>Location:</strong> {event.location}</p>
               <div className="event-buttons">
-                <button onClick={() => handleEdit(event.id)}>Edit</button>
-                <button onClick={() => handleDelete(event.id)}>Delete</button>
-                <button onClick={() => handleViewAttendees(event.id)}>View Attendees</button>
+                <button onClick={() => handleDelete(event.id)}><MdDelete /></button>
               </div>
             </div>
           ))}

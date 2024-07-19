@@ -9,11 +9,14 @@ const Sidemenu = () => {
   function handleViewEvents(){
     navigate('/events')
   }
+  function handleNavigate(){
+    navigate('/')
+  }
   return (
     <div className="sidemenu-container">
       <div className="sidemenu-header">
-        <h3>Event Master</h3>
-        <p>DASHBOARD</p>
+        <h3 onClick={handleNavigate}>Event Master</h3>
+        <p onClick={handleNavigate}>DASHBOARD</p>
       </div>
       <div className="sidemenu-items">
         <ul className="sidemenu-list">
