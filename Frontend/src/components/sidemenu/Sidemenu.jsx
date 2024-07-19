@@ -1,8 +1,14 @@
 import React from "react";
 import "./Sidemenu.css";
 import { FaHome, FaPlusCircle, FaUserPlus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Sidemenu = () => {
+  const navigate = useNavigate()
+
+  function handleViewEvents(){
+    navigate('/events')
+  }
   return (
     <div className="sidemenu-container">
       <div className="sidemenu-header">
@@ -11,7 +17,7 @@ const Sidemenu = () => {
       </div>
       <div className="sidemenu-items">
         <ul className="sidemenu-list">
-          <li className="sidemenu-item">
+          <li className="sidemenu-item" onClick={handleViewEvents}>
             <FaHome className="sidemenu-icon" />
             View Events
           </li>
