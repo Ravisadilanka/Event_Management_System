@@ -9,9 +9,15 @@ const Sidemenu = () => {
   function handleViewEvents(){
     navigate('/events')
   }
+
   function handleNavigate(){
     navigate('/')
   }
+
+  function handleAddEvent(){
+    navigate('/addevent')
+  }
+
   return (
     <div className="sidemenu-container">
       <div className="sidemenu-header">
@@ -24,9 +30,9 @@ const Sidemenu = () => {
             <FaHome className="sidemenu-icon" />
             View Events
           </li>
-          <li className="sidemenu-item">
+          <li className="sidemenu-item" onClick={handleAddEvent}>
             <FaPlusCircle className="sidemenu-icon" />
-            Add Events
+            Add Event
           </li>
           <li className="sidemenu-item">
             <FaUserPlus className="sidemenu-icon" />

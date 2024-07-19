@@ -10,20 +10,6 @@
     overflow-y: auto;
   }
   
-  .hero-container {
-    background-color: #F4F7FE;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .hero-text {
-    font-size: 24px;
-    font-weight: bold;
-    color: #2B3674;
-    margin: 0;
-  }
-  
   .event-details {
     background-color: white;
     border-radius: 10px;

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, BrowserRouter } from "react-rou
 import Home from "./pages/home/Home";
 import Events from "./pages/events/Events";
 import ViewEvent from "./pages/viewEvent/ViewEvent";
+import AddEvent from "./pages/addEvent/AddEvent";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/events" element={<Events />}></Route>
         <Route path="/events/:id" element={<ViewEvent />}></Route>
+        <Route path="/addevent" element={<AddEvent />}></Route>
       </Routes>
     </BrowserRouter>
   );

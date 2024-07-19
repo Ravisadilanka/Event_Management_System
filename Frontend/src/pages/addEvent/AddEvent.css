@@ -1,0 +1,73 @@
+.addevent-container {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .addevent-container-right {
+    flex: 1;
+    padding: 20px;
+    height: 95vh;
+    overflow-y: auto;
+  }
+  .addevent {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .addevent form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .addevent label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .addevent input,
+  .addevent textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .attendee-form {
+    margin-bottom: 15px;
+  }
+  
+  .attendee-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .addevent button {
+    background-color: #4318FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addevent button:hover {
+    background-color: #2B3674;
+  }
+  
+  .attendee-form button {
+    background-color: #FF4D4D;
+    border: none;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .attendee-form button:hover {
+    background-color: #CC0000;
+  }
+  
