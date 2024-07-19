@@ -1,0 +1,52 @@
+.registerattendee-container {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .registerattendee-container-right {
+    flex: 1;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    height: 95vh;
+  }
+  
+  .registerattendee {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .registerattendee-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .registerattendee-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .registerattendee-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .registerattendee-form button {
+    background-color: #4318FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .registerattendee-form button:hover {
+    background-color: #2B3674;
+  }
+  

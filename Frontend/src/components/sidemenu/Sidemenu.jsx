@@ -18,6 +18,10 @@ const Sidemenu = () => {
     navigate('/addevent')
   }
 
+  function handleRegisterAttendee(){
+    navigate('/registerattendee')
+  }
+
   return (
     <div className="sidemenu-container">
       <div className="sidemenu-header">
@@ -34,7 +38,7 @@ const Sidemenu = () => {
             <FaPlusCircle className="sidemenu-icon" />
             Add Event
           </li>
-          <li className="sidemenu-item">
+          <li className="sidemenu-item" onClick={handleRegisterAttendee}>
             <FaUserPlus className="sidemenu-icon" />
             Register Attendee
           </li>
