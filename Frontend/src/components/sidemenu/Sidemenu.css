@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
 .sidemenu-header {
@@ -32,6 +33,28 @@
     margin: 5px 0 0;
 }
 
+.sidemenu-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 50%;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #4318FF;
+}
+
+.profile-name {
+    margin-top: 10px;
+    color: #4318FF;
+    font-weight: bold;
+    font-size: 14px;
+}
+
 .sidemenu-items {
     width: 100%;
     background-color: white;
@@ -50,7 +73,7 @@
     width: 100%;
 }
 
-.sidemenu-items li {
+.sidemenu-item {
     width: 100%;
     padding: 15px 0;
     text-align: center;
@@ -59,14 +82,17 @@
     transition: background-color 0.3s, color 0.3s;
     font-size: 16px;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.sidemenu-items li:hover {
+.sidemenu-item:hover, .sidemenu-item.active {
     background-color: #4318FF;
     color: white;
 }
 
-.sidemenu-items li:before {
+.sidemenu-item:before {
     content: "";
     position: absolute;
     left: 0;
@@ -77,3 +103,11 @@
     transition: transform 0.3s;
 }
 
+.sidemenu-item:hover:before, .sidemenu-item.active:before {
+    transform: scaleY(1);
+}
+
+.sidemenu-icon {
+    margin-right: 10px;
+    font-size: 18px;
+}
