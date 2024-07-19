@@ -10,17 +10,13 @@ const Home = () => {
       <div className="home-container-right">
         <Hero />
         <div className="home-card">
-          <div className="home-item-card">
-            <h3>Summer Festival</h3>
-            <div className="info">
-              <p>Date:</p>
-              <p>2023.05.10</p>
-            </div>
-            <div className="info">
-              <p>Location:</p>
-              <p>Central Park</p>
-            </div>
-            <p className="description">Enjoy your day!</p>
+          <div className="card total-events">
+            <h3>Total Events</h3>
+            <p>120</p>
+          </div>
+          <div className="card total-attendees">
+            <h3>Total Attendees</h3>
+            <p>120</p>
           </div>
         </div>
       </div>
