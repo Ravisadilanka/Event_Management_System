@@ -1,42 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Sidemenu from "../../components/sidemenu/Sidemenu";
 import "./ViewEvent.css";
-
-// Sample data
-const sampleEvents = [
-  {
-    id: 1,
-    name: "Summer Festival",
-    description: "Annual summer festival with music, food, and fun activities",
-    date: "2024-08-15",
-    location: "Central Park",
-    attendees: [
-      { name: "John Doe", email: "john@example.com" },
-      { name: "Jane Smith", email: "jane@example.com" }
-    ]
-  },
-  {
-    id: 2,
-    name: "Tech Conference",
-    description: "Conference for tech enthusiasts",
-    date: "2024-09-10",
-    location: "Tech Park",
-    attendees: [
-      { name: "Alice Johnson", email: "alice@example.com" },
-      { name: "Bob Brown", email: "bob@example.com" }
-    ]
-  }
-];
+import { eventRoute } from "../../utils/APIRoutes";
+import axios from "axios";
 
 const ViewEvent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [events, setEvents] = useState(sampleEvents);
+  const [event, setEvent] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [editedEvent, setEditedEvent] = useState(() =>
-    events.find(event => event.id === parseInt(id))
-  );
+  const [editedEvent, setEditedEvent] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${eventRoute}/${id}`);
+        setEvent(response.data);
+        setEditedEvent(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [id]); // Fetch data when the component mounts or `id` changes
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,23 +58,19 @@ const ViewEvent = () => {
     }));
   };
 
-  const handleSave = () => {
-    setEvents(prevEvents =>
-      prevEvents.map(event =>
-        event.id === editedEvent.id ? editedEvent : event
-      )
-    );
-    setIsEditing(false);
+  const handleSave = async () => {
+    try {
+      await axios.put(`${eventRoute}/${editedEvent.id}`, editedEvent);
+      setEvent(editedEvent); // Update the event with the edited data
+      setIsEditing(false);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleCancel = () => {
     setIsEditing(false);
-    setEditedEvent(events.find(event => event.id === parseInt(id)));
-  };
-
-  const handleDelete = (id) => {
-    console.log(`Delete event with id: ${id}`);
-    // Implement delete logic here
+    setEditedEvent(event); // Reset to original event data
   };
 
   if (!editedEvent) {
@@ -161,6 +145,7 @@ const ViewEvent = () => {
                         onChange={(e) => handleAttendeeChange(index, e)}
                       />
                     </label>
+                    <button type="button" onClick={() => handleRemoveAttendee(index)}>Remove Attendee</button>
                   </div>
                 ))}
                 <button type="button" onClick={handleAddAttendee}>Add Attendee</button>
@@ -170,14 +155,14 @@ const ViewEvent = () => {
             </div>
           ) : (
             <>
-              <h2>{editedEvent.name}</h2>
-              <p><strong>Description:</strong> {editedEvent.description}</p>
-              <p><strong>Date:</strong> {editedEvent.date}</p>
-              <p><strong>Location:</strong> {editedEvent.location}</p>
+              <h2>{event.name}</h2>
+              <p><strong>Description:</strong> {event.description}</p>
+              <p><strong>Date:</strong> {event.date}</p>
+              <p><strong>Location:</strong> {event.location}</p>
               <div className="attendees-list">
                 <h3>Attendees</h3>
                 <ul>
-                  {editedEvent.attendees.map((attendee, index) => (
+                  {event.attendees.map((attendee, index) => (
                     <li key={index}>
                       <p><strong>Name:</strong> {attendee.name}</p>
                       <p><strong>Email:</strong> {attendee.email}</p>
