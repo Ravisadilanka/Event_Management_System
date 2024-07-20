@@ -2,6 +2,7 @@ import React from "react";
 import "./Sidemenu.css";
 import { FaHome, FaPlusCircle, FaUserPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import profilePic from "../../assets/profile.jpeg";
 
 const Sidemenu = () => {
   const navigate = useNavigate()
@@ -44,7 +45,7 @@ const Sidemenu = () => {
           </li>
         </ul>
         <div className="sidemenu-profile">
-          <img src="profile-pic-url" alt="Profile" className="profile-pic" />
+          <img src={profilePic} alt="Profile" className="profile-pic" />
           <p className="profile-name">Ravisa Dilanka</p>
         </div>
       </div>
