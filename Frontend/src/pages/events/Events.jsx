@@ -1,30 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidemenu from "../../components/sidemenu/Sidemenu";
 import Hero from "../../components/hero/Hero";
 import { MdDelete } from "react-icons/md";
 import './Events.css';
 import { useNavigate } from "react-router-dom";
-
-const sampleEvents = [
-  {
-    id: 1,
-    name: "Summer Festival",
-    description: "Annual summer festival with music, food, and fun activities",
-    date: "2024-08-15",
-    location: "Central Park"
-  },
-  {
-    id: 2,
-    name: "Tech Conference",
-    description: "Conference for tech enthusiasts",
-    date: "2024-09-10",
-    location: "Tech Park"
-  },
-  // Add more sample events here
-];
+import axios from "axios"
+import { allEventsRoute } from "../../utils/APIRoutes";
 
 const Events = () => {
-  const [events, setEvents] = useState(sampleEvents);
+  const [events, setEvents] = useState([]);
   const navigate = useNavigate();
 
   const handleDelete = (id) => {
@@ -39,6 +23,18 @@ const Events = () => {
   const handleViewDetails = (id) => {
     navigate(`/events/${id}`);
   };
+
+  useEffect(() => {
+    const fetchData = async() => {
+      try {
+        const response = await axios.get(allEventsRoute)
+        setEvents(response.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchData()
+  },[])
 
   return (
     <div className="events-container">
