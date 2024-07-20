@@ -33,7 +33,7 @@ const RegisterAttendee = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${addAttendeeRoute}/${id}`)
+      const response = await axios.post(`${addAttendeeRoute}/${id}`, attendee)
       toast.success(response.data, toastOptions)
     } catch (error) {
       toast.error("Error registering attendee", toastOptions)

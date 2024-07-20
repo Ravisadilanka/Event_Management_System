@@ -1,0 +1,76 @@
+.selectevent-container {
+    display: flex;
+    padding: 20px;
+}
+
+.selectevent-container-right {
+    flex: 1;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.selectevent-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.selectevent-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.selectevent-card h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #2B3674;
+}
+
+.selectevent-buttons {
+    display: flex;
+    justify-content: left;
+    gap: 50px;
+}
+
+.selectevent-buttons button {
+    background-color: #4318FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.selectevent-buttons button:hover {
+    background-color: #2B3674;
+}
+
+.selectevent-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.selectevent-list::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+.selectevent-list::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+}
+
+.selectevent-list::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

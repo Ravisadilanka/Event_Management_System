@@ -20,7 +20,7 @@ const Sidemenu = () => {
   }
 
   function handleRegisterAttendee(){
-    navigate('/registerattendee')
+    navigate('/selectevent')
   }
 
   return (
