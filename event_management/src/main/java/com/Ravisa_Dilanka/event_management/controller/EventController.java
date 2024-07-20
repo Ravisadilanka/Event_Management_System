@@ -32,9 +32,9 @@ public class EventController {
     }
 
     @PutMapping("/update/{id}")
-    public Event updateEvent(@RequestBody Event event, @PathVariable int id) {
+    public String updateEvent(@RequestBody Event event, @PathVariable int id) {
         event.setId(id);
-        return eventService.updateEvent(event);
+        return "Event updated successfully";
     }
 
     @DeleteMapping("/{id}")
