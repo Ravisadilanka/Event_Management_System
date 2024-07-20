@@ -5,19 +5,29 @@ import { MdDelete } from "react-icons/md";
 import './Events.css';
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
-import { allEventsRoute } from "../../utils/APIRoutes";
+import { allEventsRoute,eventRoute } from "../../utils/APIRoutes";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
 
-  const handleDelete = (id) => {
-    console.log(`Delete event with id: ${id}`);
-    // Implement delete logic here
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
   };
 
-  const handleNavigate = (id) => {
-    navigate(`/events/${id}`);
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(`${eventRoute}/${id}`);
+      toast.success(response.data, toastOptions);
+    } catch (error) {
+      toast.error("Failed to delete event", toastOptions);
+    }
   };
 
   const handleViewDetails = (id) => {
@@ -34,13 +44,15 @@ const Events = () => {
       }
     }
     fetchData()
-  },[])
+  },[handleDelete])
 
   return (
     <div className="events-container">
       <Sidemenu />
       <div className="events-container-right">
-        <Hero />
+      <div className="hero-container">
+          <h1 className="hero-text">Upcoming Events</h1>
+        </div>
         <div className="events-list">
           {events.map(event => (
             <div key={event.id} className="event-card">
@@ -53,6 +65,7 @@ const Events = () => {
           ))}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -26,11 +26,13 @@
 .sidemenu-header h3 {
     font-size: 20px;
     margin: 0;
+    cursor: pointer;
 }
 
 .sidemenu-header p {
     font-size: 12px;
     margin: 5px 0 0;
+    cursor: pointer;
 }
 
 .sidemenu-profile {
