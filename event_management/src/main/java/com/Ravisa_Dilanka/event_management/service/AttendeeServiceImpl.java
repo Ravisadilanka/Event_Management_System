@@ -6,6 +6,8 @@ import com.Ravisa_Dilanka.event_management.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AttendeeServiceImpl implements  AttendeeService{
 
@@ -21,5 +23,10 @@ public class AttendeeServiceImpl implements  AttendeeService{
             attendee.setEvent(event);
             return attendeeRepository.save(attendee);
         }).orElseThrow(() -> new RuntimeException("Event not found"));
+    }
+
+    @Override
+    public List<Attendee> getAllAttendees() {
+        return attendeeRepository.findAll();
     }
 }
