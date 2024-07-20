@@ -1,6 +1,6 @@
 .hero-container {
     color: #2B3674;
-    height: 110px;
+    height: 135px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +9,6 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin-bottom: 40px;
 }
 
 .hero-text {

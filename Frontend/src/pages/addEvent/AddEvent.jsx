@@ -1,15 +1,26 @@
 import React, { useState } from "react";
 import Sidemenu from "../../components/sidemenu/Sidemenu";
 import "./AddEvent.css";
+import axios from 'axios'
+import { addEventRoute, eventRoute } from "../../utils/APIRoutes";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddEvent = () => {
   const [event, setEvent] = useState({
     name: "",
     description: "",
     date: "",
-    location: "",
-    attendees: [{ name: "", email: "" }]
+    location: ""
   });
+
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,10 +40,15 @@ const AddEvent = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Event submitted:", event);
-    // Implement form submission logic here
+    try {
+      const response = await axios.post(addEventRoute, event)
+      toast.success(response.data , toastOptions)
+
+    } catch (error) {
+      
+    }
   };
 
   return (
@@ -87,6 +103,7 @@ const AddEvent = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
