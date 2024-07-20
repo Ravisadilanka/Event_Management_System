@@ -3,7 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import Sidemenu from "../../components/sidemenu/Sidemenu";
 import "./ViewEvent.css";
 import { eventRoute } from "../../utils/APIRoutes";
+import { updateEventRoute } from "../../utils/APIRoutes";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ViewEvent = () => {
   const { id } = useParams();
@@ -24,7 +27,15 @@ const ViewEvent = () => {
     };
 
     fetchData();
-  }, [id]); // Fetch data when the component mounts or `id` changes
+  }, [id]);
+
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,9 +71,10 @@ const ViewEvent = () => {
 
   const handleSave = async () => {
     try {
-      await axios.put(`${eventRoute}/${editedEvent.id}`, editedEvent);
-      setEvent(editedEvent); // Update the event with the edited data
+      const updatedResponse = await axios.put(`${updateEventRoute}/${editedEvent.id}`, editedEvent);
+      setEvent(editedEvent);
       setIsEditing(false);
+      toast.success(updatedResponse.data, toastOptions);
     } catch (error) {
       console.error(error);
     }
@@ -70,11 +82,23 @@ const ViewEvent = () => {
 
   const handleCancel = () => {
     setIsEditing(false);
-    setEditedEvent(event); // Reset to original event data
+    setEditedEvent(event);
   };
 
   if (!editedEvent) {
-    return <div>Event not found</div>;
+    return (
+      <div className="viewevent-container">
+        <Sidemenu />
+        <div className="viewevent-container-right">
+          <div className="hero-container">
+            <h1 className="hero-text">Event Details</h1>
+          </div>
+          <div className="event-details">
+            <h2>No Events</h2>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -177,6 +201,7 @@ const ViewEvent = () => {
           )}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
