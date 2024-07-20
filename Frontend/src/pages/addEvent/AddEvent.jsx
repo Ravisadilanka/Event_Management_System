@@ -45,9 +45,8 @@ const AddEvent = () => {
     try {
       const response = await axios.post(addEventRoute, event)
       toast.success(response.data , toastOptions)
-
     } catch (error) {
-      
+      toast.error('Error adding event', toastOptions)
     }
   };
 

@@ -1,12 +1,26 @@
 import React, { useState } from "react";
 import './RegisterAttendee.css';
 import Sidemenu from "../../components/sidemenu/Sidemenu";
+import axios from 'axios'
+import { addAttendeeRoute } from "../../utils/APIRoutes";
+import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RegisterAttendee = () => {
+  const { id } = useParams();
   const [attendee, setAttendee] = useState({
     name: "",
     email: ""
   });
+
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,10 +30,14 @@ const RegisterAttendee = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Attendee registered:", attendee);
-    // Implement registration logic here
+    try {
+      const response = await axios.post(`${addAttendeeRoute}/${id}`)
+      toast.success(response.data, toastOptions)
+    } catch (error) {
+      toast.error("Error registering attendee", toastOptions)
+    }
   };
 
   return (
@@ -55,6 +73,7 @@ const RegisterAttendee = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
