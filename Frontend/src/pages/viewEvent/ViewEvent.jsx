@@ -39,9 +39,9 @@ const ViewEvent = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEditedEvent(prevEvent => ({
+    setEditedEvent((prevEvent) => ({
       ...prevEvent,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -49,29 +49,45 @@ const ViewEvent = () => {
     const { name, value } = e.target;
     const updatedAttendees = [...editedEvent.attendees];
     updatedAttendees[index] = { ...updatedAttendees[index], [name]: value };
-    setEditedEvent(prevEvent => ({
+    setEditedEvent((prevEvent) => ({
       ...prevEvent,
-      attendees: updatedAttendees
+      attendees: updatedAttendees,
     }));
   };
 
   const handleAddAttendee = () => {
-    setEditedEvent(prevEvent => ({
+    setEditedEvent((prevEvent) => ({
       ...prevEvent,
-      attendees: [...prevEvent.attendees, { name: "", email: "" }]
+      attendees: [...prevEvent.attendees, { name: "", email: "" }],
     }));
   };
 
   const handleRemoveAttendee = (index) => {
-    setEditedEvent(prevEvent => ({
+    setEditedEvent((prevEvent) => ({
       ...prevEvent,
-      attendees: prevEvent.attendees.filter((_, i) => i !== index)
+      attendees: prevEvent.attendees.filter((_, i) => i !== index),
     }));
   };
 
   const handleSave = async () => {
+    if (
+      !editedEvent.name ||
+      !editedEvent.description ||
+      !editedEvent.date ||
+      !editedEvent.location ||
+      editedEvent.attendees.some(
+        (attendee) => !attendee.name || !attendee.email
+      )
+    ) {
+      toast.error("Please fill out all fields before saving.", toastOptions);
+      return;
+    }
+
     try {
-      const updatedResponse = await axios.put(`${updateEventRoute}/${editedEvent.id}`, editedEvent);
+      const updatedResponse = await axios.put(
+        `${updateEventRoute}/${editedEvent.id}`,
+        editedEvent
+      );
       setEvent(editedEvent);
       setIsEditing(false);
       toast.success(updatedResponse.data, toastOptions);
@@ -120,6 +136,7 @@ const ViewEvent = () => {
                     name="name"
                     value={editedEvent.name}
                     onChange={handleChange}
+                    required
                   />
                 </label>
                 <label>
@@ -169,27 +186,48 @@ const ViewEvent = () => {
                         onChange={(e) => handleAttendeeChange(index, e)}
                       />
                     </label>
-                    <button type="button" onClick={() => handleRemoveAttendee(index)}>Remove Attendee</button>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveAttendee(index)}
+                    >
+                      Remove Attendee
+                    </button>
                   </div>
                 ))}
-                <button type="button" onClick={handleAddAttendee}>Add Attendee</button>
-                <button type="button" onClick={handleSave}>Save</button>
-                <button type="button" onClick={handleCancel}>Cancel</button>
+                <button type="button" onClick={handleAddAttendee}>
+                  Add Attendee
+                </button>
+                <button type="button" onClick={handleSave}>
+                  Save
+                </button>
+                <button type="button" onClick={handleCancel}>
+                  Cancel
+                </button>
               </form>
             </div>
           ) : (
             <>
               <h2>{event.name}</h2>
-              <p><strong>Description:</strong> {event.description}</p>
-              <p><strong>Date:</strong> {event.date}</p>
-              <p><strong>Location:</strong> {event.location}</p>
+              <p>
+                <strong>Description:</strong> {event.description}
+              </p>
+              <p>
+                <strong>Date:</strong> {event.date}
+              </p>
+              <p>
+                <strong>Location:</strong> {event.location}
+              </p>
               <div className="attendees-list">
                 <h3>Attendees</h3>
                 <ul>
                   {event.attendees.map((attendee, index) => (
                     <li key={index}>
-                      <p><strong>Name:</strong> {attendee.name}</p>
-                      <p><strong>Email:</strong> {attendee.email}</p>
+                      <p>
+                        <strong>Name:</strong> {attendee.name}
+                      </p>
+                      <p>
+                        <strong>Email:</strong> {attendee.email}
+                      </p>
                     </li>
                   ))}
                 </ul>

@@ -38,7 +38,7 @@ public class EventController {
     public ResponseEntity<String> updateEvent(@RequestBody Event event, @PathVariable int id) {
         try {
             event.setId(id);
-            eventService.updateEvent(event);
+            eventService.updateEvent(id, event);
             return ResponseEntity.ok("Event updated successfully");
         } catch (EventNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Event not found with id: " + id);

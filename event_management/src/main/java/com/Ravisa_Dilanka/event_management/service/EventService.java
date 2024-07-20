@@ -8,6 +8,6 @@ public interface EventService {
     Event addEvent(Event event);
     List<Event> getAllEvents();
     Event getAnEvent(int id);
-    Event updateEvent(Event event);
+    Event updateEvent(int id, Event event);
     void deleteEvent(int id);
 }
