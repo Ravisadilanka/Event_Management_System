@@ -26,6 +26,11 @@ public class EventController {
         return eventService.getAllEvents();
     }
 
+    @GetMapping("/{id}")
+    public Event getAnEvent(@PathVariable int id) {
+        return eventService.getAnEvent(id);
+    }
+
     @PutMapping("/update/{id}")
     public Event updateEvent(@RequestBody Event event, @PathVariable int id) {
         event.setId(id);

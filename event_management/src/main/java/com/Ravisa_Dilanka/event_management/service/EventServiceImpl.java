@@ -1,5 +1,6 @@
 package com.Ravisa_Dilanka.event_management.service;
 
+import com.Ravisa_Dilanka.event_management.exception.EventNotFoundException;
 import com.Ravisa_Dilanka.event_management.model.Event;
 import com.Ravisa_Dilanka.event_management.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,12 @@ public class EventServiceImpl implements EventService{
     @Override
     public List<Event> getAllEvents() {
         return eventRepository.findAll();
+    }
+
+    @Override
+    public Event getAnEvent(int id) {
+        return eventRepository.findById(id)
+                .orElseThrow(() -> new EventNotFoundException("Event not found with id: " + id));
     }
 
     @Override
