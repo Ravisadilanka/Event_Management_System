@@ -3,6 +3,7 @@ import "./Sidemenu.css";
 import { FaHome, FaPlusCircle, FaUserPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import profilePic from "../../assets/profile.jpeg";
+import Logo from '../../assets/logo.png'
 
 const Sidemenu = () => {
   const navigate = useNavigate()
@@ -26,6 +27,7 @@ const Sidemenu = () => {
   return (
     <div className="sidemenu-container">
       <div className="sidemenu-header">
+      <span><img src={Logo} alt="logo" onClick={handleNavigate}/></span>
         <h3 onClick={handleNavigate}>Event Master</h3>
         <p onClick={handleNavigate}>DASHBOARD</p>
       </div>
@@ -33,15 +35,18 @@ const Sidemenu = () => {
         <ul className="sidemenu-list">
           <li className="sidemenu-item" onClick={handleViewEvents}>
             <FaHome className="sidemenu-icon" />
-            View Events
+            <span>View Events</span>
+            
           </li>
           <li className="sidemenu-item" onClick={handleAddEvent}>
             <FaPlusCircle className="sidemenu-icon" />
-            Add Event
+            <span>Add Event</span>
+            
           </li>
           <li className="sidemenu-item" onClick={handleRegisterAttendee}>
             <FaUserPlus className="sidemenu-icon" />
-            Register Attendee
+            <span>Register Attendee</span>
+            
           </li>
         </ul>
         <div className="sidemenu-profile">
