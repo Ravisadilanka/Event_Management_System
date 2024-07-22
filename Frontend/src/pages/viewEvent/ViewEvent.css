@@ -9,23 +9,23 @@
   padding-right: 20px;
   padding-bottom: 20px;
   height: 95vh;
-  overflow: hidden; /* Prevents the entire container from scrolling */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
 .hero-container {
-  flex: 0 0 auto; /* Keeps the hero container's height fixed */
+  flex: 0 0 auto;
 }
 
 .event-details {
-  flex: 1 1 auto; /* Allows the event details section to grow and shrink */
+  flex: 1 1 auto;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  overflow-y: auto; /* Enables vertical scrolling */
-  margin-top: 20px; /* Adds space between the hero container and event details */
+  overflow-y: auto;
+  margin-top: 20px;
 }
 
 .event-details h2 {
@@ -121,4 +121,80 @@
 
 .attendee-form button:hover {
   background-color: #CC0000;
+}
+
+@media (max-width: 768px){
+  .viewevent-container{
+    padding: 15px;
+  }
+
+  .viewevent-container-right {
+    padding: 0;
+    margin-left: 15px;
+    
+  }
+
+  .event-details h2 {
+    font-size: 18px;
+  }
+
+  .event-details p {
+    font-size: 14px;
+  }
+
+  .attendees-list h3{
+    font-size: 18px;
+  }
+  .edit-attendee-title{
+    font-size: 18px;
+  }
+
+  .event-form label{
+    font-size: 14px;
+  }
+
+  .event-form input,
+  .event-form textarea {
+    padding: 5px;
+  }
+
+  .event-form button {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px){
+  .viewevent-container {
+    padding: 0;
+}
+
+.viewevent-container-right {
+    margin-left: 0;
+    padding: 10px;
+}
+
+.event-details h2 {
+  font-size: 16px;
+}
+
+.event-details p {
+  font-size: 12px;
+}
+
+.attendees-list h3{
+  font-size: 16px;
+}
+
+.edit-attendee-title{
+  font-size: 16px;
+}
+
+.event-form label{
+  font-size: 12px;
+}
+
+.event-form input,
+.event-form textarea {
+  padding: 5px;
+}
 }

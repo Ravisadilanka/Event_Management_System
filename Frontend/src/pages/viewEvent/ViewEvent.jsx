@@ -63,20 +63,6 @@ const ViewEvent = () => {
     }));
   };
 
-  const handleAddAttendee = () => {
-    setEditedEvent((prevEvent) => ({
-      ...prevEvent,
-      attendees: [...prevEvent.attendees, { name: "", email: "" }],
-    }));
-  };
-
-  const handleRemoveAttendee = (index) => {
-    setEditedEvent((prevEvent) => ({
-      ...prevEvent,
-      attendees: prevEvent.attendees.filter((_, i) => i !== index),
-    }));
-  };
-
   const handleSave = async () => {
     if (
       !editedEvent.name ||
@@ -173,7 +159,7 @@ const ViewEvent = () => {
                     onChange={handleChange}
                   />
                 </label>
-                <h3>Attendees</h3>
+                <h3 className="edit-attendee-title">Attendees</h3>
                 {editedEvent.attendees.map((attendee, index) => (
                   <div key={index} className="attendee-form">
                     <label>
@@ -194,17 +180,8 @@ const ViewEvent = () => {
                         onChange={(e) => handleAttendeeChange(index, e)}
                       />
                     </label>
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveAttendee(index)}
-                    >
-                      Remove Attendee
-                    </button>
                   </div>
                 ))}
-                <button type="button" onClick={handleAddAttendee}>
-                  Add Attendee
-                </button>
                 <button type="button" onClick={handleSave}>
                   Save
                 </button>
