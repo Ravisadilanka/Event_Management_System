@@ -52,8 +52,55 @@
     background-color: #2B3674;
   }
   
-  @media (max-width: 480px) {
-    .registerattendee-container {
-      padding: 5px;
-    }
+  
+@media (max-width: 768px) {
+  .registerattendee-container {
+    padding: 15px;
   }
+
+  .registerattendee-container-right {
+    padding: 0;
+    margin-left: 15px;
+
+  }
+
+  .registerattendee-form label {
+    font-size: 14px;
+  }
+
+  .registerattendee-form input {
+    font-size: 14px;
+  }
+
+
+  .registerattendee-form input,
+  .registerattendee-form textarea {
+    padding: 5px;
+  }
+
+  .registerattendee-form button {
+    font-size: 10px;
+    width: 56px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .registerattendee-container {
+    padding: 0;
+  }
+
+  .registerattendee-container-right {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .registerattendee-form label {
+    font-size: 12px;
+  }
+
+  .registerattendee-form input {
+    font-size: 12px;
+  }
+
+}
