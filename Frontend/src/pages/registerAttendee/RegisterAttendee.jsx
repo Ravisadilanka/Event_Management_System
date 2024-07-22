@@ -31,6 +31,14 @@ const RegisterAttendee = () => {
   };
 
   const handleSubmit = async (e) => {
+    if (
+      !attendee.name ||
+      !attendee.email
+    ) {
+      toast.error("Please fill out all fields before submit.", toastOptions);
+      e.preventDefault();
+      return;
+    }
     e.preventDefault();
     try {
       const response = await axios.post(`${addAttendeeRoute}/${id}`, attendee)
@@ -56,7 +64,6 @@ const RegisterAttendee = () => {
                 name="name"
                 value={attendee.name}
                 onChange={handleChange}
-                required
               />
             </label>
             <label>
@@ -66,7 +73,6 @@ const RegisterAttendee = () => {
                 name="email"
                 value={attendee.email}
                 onChange={handleChange}
-                required
               />
             </label>
             <button type="submit">Register</button>
