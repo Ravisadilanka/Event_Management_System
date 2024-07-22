@@ -41,6 +41,16 @@ const AddEvent = () => {
   };
 
   const handleSubmit = async (e) => {
+    if (
+      !event.name ||
+      !event.description ||
+      !event.date ||
+      !event.location
+    ) {
+      toast.error("Please fill out all fields before submit.", toastOptions);
+      e.preventDefault();
+      return;
+    }
     e.preventDefault();
     try {
       const response = await axios.post(addEventRoute, event)
@@ -65,8 +75,7 @@ const AddEvent = () => {
                 type="text"
                 name="name"
                 value={event.name}
-                onChange={handleChange}
-                required
+                onChange={handleChange}d
               />
             </label>
             <label>
@@ -75,7 +84,6 @@ const AddEvent = () => {
                 name="description"
                 value={event.description}
                 onChange={handleChange}
-                required
               />
             </label>
             <label>
@@ -85,7 +93,6 @@ const AddEvent = () => {
                 name="date"
                 value={event.date}
                 onChange={handleChange}
-                required
               />
             </label>
             <label>
@@ -95,7 +102,6 @@ const AddEvent = () => {
                 name="location"
                 value={event.location}
                 onChange={handleChange}
-                required
               />
             </label>
             <button type="submit">Submit</button>
