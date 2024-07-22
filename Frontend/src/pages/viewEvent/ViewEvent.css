@@ -95,6 +95,8 @@
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 68px;
+  height: 40px;
 }
 
 .event-form button:hover {
@@ -123,15 +125,15 @@
   background-color: #CC0000;
 }
 
-@media (max-width: 768px){
-  .viewevent-container{
+@media (max-width: 768px) {
+  .viewevent-container {
     padding: 15px;
   }
 
   .viewevent-container-right {
     padding: 0;
     margin-left: 15px;
-    
+
   }
 
   .event-details h2 {
@@ -142,14 +144,19 @@
     font-size: 14px;
   }
 
-  .attendees-list h3{
-    font-size: 18px;
-  }
-  .edit-attendee-title{
+  .attendees-list h3 {
     font-size: 18px;
   }
 
-  .event-form label{
+  .edit-attendee-title {
+    font-size: 18px;
+  }
+
+  .event-form label {
+    font-size: 14px;
+  }
+
+  .event-form input {
     font-size: 14px;
   }
 
@@ -160,41 +167,43 @@
 
   .event-form button {
     font-size: 10px;
+    width: 56px;
+    height: 35px;
   }
 }
 
-@media (max-width: 480px){
+@media (max-width: 480px) {
   .viewevent-container {
     padding: 0;
-}
+  }
 
-.viewevent-container-right {
+  .viewevent-container-right {
     margin-left: 0;
     padding: 10px;
-}
+  }
 
-.event-details h2 {
-  font-size: 16px;
-}
+  .event-details h2 {
+    font-size: 16px;
+  }
 
-.event-details p {
-  font-size: 12px;
-}
+  .event-details p {
+    font-size: 12px;
+  }
 
-.attendees-list h3{
-  font-size: 16px;
-}
+  .attendees-list h3 {
+    font-size: 16px;
+  }
 
-.edit-attendee-title{
-  font-size: 16px;
-}
+  .edit-attendee-title {
+    font-size: 16px;
+  }
 
-.event-form label{
-  font-size: 12px;
-}
+  .event-form label {
+    font-size: 12px;
+  }
 
-.event-form input,
-.event-form textarea {
-  padding: 5px;
-}
+  .event-form input {
+    font-size: 12px;
+  }
+
 }

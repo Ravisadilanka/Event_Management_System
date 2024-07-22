@@ -1,77 +1,129 @@
 .addevent-container {
-    display: flex;
-    padding: 20px;
+  display: flex;
+  padding: 20px;
+}
+
+.addevent-container-right {
+  flex: 1;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  height: 95vh;
+  overflow-y: auto;
+}
+
+.addevent {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.addevent form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.addevent label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.addevent input,
+.addevent textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.attendee-form {
+  margin-bottom: 15px;
+}
+
+.attendee-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.addevent button {
+  background-color: #4318FF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100px;
+}
+
+.addevent button:hover {
+  background-color: #2B3674;
+}
+
+.attendee-form button {
+  background-color: #FF4D4D;
+  border: none;
+  padding: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.attendee-form button:hover {
+  background-color: #CC0000;
+}
+
+@media (max-width: 768px) {
+  .addevent-container {
+    padding: 15px;
   }
-  
+
   .addevent-container-right {
-    flex: 1;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    height: 95vh;
-    overflow-y: auto;
+    padding: 0;
+    margin-left: 15px;
+
   }
-  .addevent {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-top: 20px;
-    }
-  
-  .addevent form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
+
   .addevent label {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    font-size: 14px;
   }
-  
+
+  .addevent input {
+    font-size: 14px;
+  }
+
+
   .addevent input,
   .addevent textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .attendee-form {
-    margin-bottom: 15px;
-  }
-  
-  .attendee-form label {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  .addevent button {
-    background-color: #4318FF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100px;
-  }
-  
-  .addevent button:hover {
-    background-color: #2B3674;
-  }
-  
-  .attendee-form button {
-    background-color: #FF4D4D;
-    border: none;
     padding: 5px;
-    color: white;
-    cursor: pointer;
   }
-  
-  .attendee-form button:hover {
-    background-color: #CC0000;
+
+  .addevent button {
+    font-size: 10px;
+    width: 56px;
+    height: 35px;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .addevent-container {
+    padding: 0;
+  }
+
+  .addevent-container-right {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .addevent label {
+    font-size: 12px;
+  }
+
+  .addevent input {
+    font-size: 12px;
+  }
+
+}

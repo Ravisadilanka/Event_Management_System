@@ -182,12 +182,14 @@ const ViewEvent = () => {
                     </label>
                   </div>
                 ))}
+                <div className="event-buttons">
                 <button type="button" onClick={handleSave}>
                   Save
                 </button>
                 <button type="button" onClick={handleCancel}>
                   Cancel
                 </button>
+                </div>
               </form>
             </div>
           ) : (
