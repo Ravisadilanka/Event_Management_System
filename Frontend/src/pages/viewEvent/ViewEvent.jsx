@@ -37,6 +37,14 @@ const ViewEvent = () => {
     theme: "dark",
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEditedEvent((prevEvent) => ({
@@ -212,7 +220,7 @@ const ViewEvent = () => {
                 <strong>Description:</strong> {event.description}
               </p>
               <p>
-                <strong>Date:</strong> {event.date}
+                <strong>Date:</strong> {formatDate(event.date)}
               </p>
               <p>
                 <strong>Location:</strong> {event.location}

@@ -6,6 +6,7 @@ import ViewEvent from "./pages/viewEvent/ViewEvent";
 import AddEvent from "./pages/addEvent/AddEvent";
 import RegisterAttendee from "./pages/registerAttendee/RegisterAttendee";
 import SelectEvent from "./pages/selectEvent/SelectEvent";
+import SelectEventView from "./pages/selectEventView/SelectEventView";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Route path="/events/:id" element={<ViewEvent />}></Route>
         <Route path="/addevent" element={<AddEvent />}></Route>
         <Route path="/selectevent" element={<SelectEvent />}></Route>
-        <Route path="/selectevent/:id" element={<RegisterAttendee />}></Route>
+        <Route path="/selectevent/:id" element={<SelectEventView/>}></Route>
+        <Route path="/selectevent/registerattendee/:id" element={<RegisterAttendee />}></Route>
       </Routes>
     </BrowserRouter>
   );

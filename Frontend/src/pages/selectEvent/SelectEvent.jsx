@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./SelectEvent.css";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { allEventsRoute } from "../../utils/APIRoutes";
 import Sidemenu from "../../components/sidemenu/Sidemenu";
@@ -19,7 +20,7 @@ const SelectEvent = () => {
   };
 
   const handleRegisterAttendee = (id) => {
-    navigate(`/selectevent/${id}`);
+    navigate(`/selectevent/registerattendee/${id}`);
   };
   const handleViewDetails = (id) => {
     navigate(`/selectevent/${id}`);
