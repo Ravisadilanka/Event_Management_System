@@ -74,3 +74,33 @@
 .events-list::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
+
+@media (max-width: 768px) {
+    .events-container {
+        padding: 15px;
+    }
+
+    .events-container-right {
+        padding: 0;
+        margin-left: 15px;
+    }
+
+    .event-card h3 {
+        font-size: 14px;
+    }
+
+    .event-buttons button {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px){
+    .events-container {
+        padding: 0;
+    }
+
+    .events-container-right {
+        margin-left: 0;
+        padding: 10px;
+    }
+}
