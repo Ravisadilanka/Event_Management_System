@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Sidemenu from "../../components/sidemenu/Sidemenu";
 import "./ViewEvent.css";
-import { eventRoute } from "../../utils/APIRoutes";
-import { updateEventRoute } from "../../utils/APIRoutes";
+import { eventRoute, updateEventRoute } from "../../utils/APIRoutes";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,7 +19,10 @@ const ViewEvent = () => {
       try {
         const response = await axios.get(`${eventRoute}/${id}`);
         setEvent(response.data);
-        setEditedEvent(response.data);
+        setEditedEvent({
+          ...response.data,
+          date: formatDate(response.data.date),
+        });
       } catch (error) {
         console.error(error);
       }
@@ -87,12 +89,16 @@ const ViewEvent = () => {
       toast.success(updatedResponse.data, toastOptions);
     } catch (error) {
       console.error(error);
+      toast.error("Error saving event.", toastOptions);
     }
   };
 
   const handleCancel = () => {
     setIsEditing(false);
-    setEditedEvent(event);
+    setEditedEvent({
+      ...event,
+      date: formatDate(event.date),
+    });
   };
 
   if (!editedEvent) {
@@ -183,12 +189,12 @@ const ViewEvent = () => {
                   </div>
                 ))}
                 <div className="event-buttons">
-                <button type="button" onClick={handleSave}>
-                  Save
-                </button>
-                <button type="button" onClick={handleCancel}>
-                  Cancel
-                </button>
+                  <button type="button" onClick={handleSave}>
+                    Save
+                  </button>
+                  <button type="button" onClick={handleCancel}>
+                    Cancel
+                  </button>
                 </div>
               </form>
             </div>

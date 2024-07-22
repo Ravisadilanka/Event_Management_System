@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 const SelectEventView = () => {
   const { id } = useParams();
-  const [event, setEvent] = useState(null); // Initialize event to null
+  const [event, setEvent] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
