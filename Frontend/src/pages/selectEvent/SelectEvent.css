@@ -74,3 +74,37 @@
 .selectevent-list::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
+
+@media (max-width: 768px) {
+    .selectevent-container {
+        padding: 15px;
+    }
+
+    .selectevent-container-right {
+        padding: 0;
+        margin-left: 15px;
+    }
+
+    .selectevent-card h3 {
+        font-size: 14px;
+    }
+
+    .selectevent-buttons button {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px){
+    .selectevent-container {
+        padding: 0;
+    }
+
+    .selectevent-container-right {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .selectevent-card{
+        gap: 10px;
+    }
+}

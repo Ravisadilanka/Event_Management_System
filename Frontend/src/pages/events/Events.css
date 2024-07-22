@@ -103,4 +103,8 @@
         margin-left: 0;
         padding: 10px;
     }
+
+    .event-card {
+        gap: 10px;
+    }
 }
